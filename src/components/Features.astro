@@ -1,0 +1,70 @@
+---
+const features = [
+  {
+    img: "./inboxes.png",
+    title: "Share team inboxes",
+    description:
+      "Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.",
+  },
+  {
+    img: "./answers.png",
+    title: "Deliver instant answers",
+    description:
+      "An all-in-one customer service platform that helps you balance everything your customers need to be happy.",
+  },
+  {
+    img: "./reports.png",
+    title: "Manage your team with reports",
+    description:
+      "Measure what matters with Untitled’s easy-to-use reports. You can filter, export, and drill down on the data in a couple of clicks.",
+  },
+  {
+    img: "./cusomers.png",
+    title: "Connect with customers",
+    description:
+      "Solve a problem or close a sale in real-time with chat. If no one is available, customers are seamlessly routed to email without confusion.",
+  },
+  {
+    img: "./connect.png",
+    title: "Connect the tools you already use",
+    description:
+      "Explore 100+ integrations that make your day-to-day workflow more efficient and familiar. Plus, our extensive developer tools.",
+  },
+  {
+    img: "./people.png",
+    title: "Our people make the difference",
+    description:
+      "We’re an extension of your customer service team, and all of our resources are free. Chat to our friendly team 24/7 when you need help.",
+  },
+];
+---
+
+<section class="w-[100%] flex justify-center">
+  <div
+    class="w-[85%] flex flex-col items-center justify-between gap-16 border-b border-[#E9EAEB] py-24"
+  >
+    <div class="flex flex-col gap-3 justify-center items-center">
+      <div class="text-lg font-semibold text-[#6941C6]">Features</div>
+      <div class="text-[#181D27] text-3xl font-bold">
+        All you need to run your finances effectively
+      </div>
+      <p class="text-[#535862]">
+        Open a full-featured account in with virtual cards in less than 5
+        minutes.
+      </p>
+    </div>
+    <div class="grid grid-cols-3 gap-15">
+      {
+        features.map((data) => (
+          <div class="flex flex-col gap-2 items-center justify-center text-center">
+            <div class="bg-[#F4EBFF] p-3 rounded-full">
+              <img src={data.img} />
+            </div>
+            <div class="text-lg font-semibold text-[#181D27]">{data.title}</div>
+            <p class="text-[#535862] text-sm">{data.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

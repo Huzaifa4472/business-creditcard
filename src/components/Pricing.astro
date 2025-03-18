@@ -1,0 +1,109 @@
+---
+const plans = [
+  {
+    name: "Basic plan",
+    price: "$10",
+    description: "Basic features for up to 10 users.",
+    popular: true,
+    features: [
+      "Access to basic features",
+      "Basic reporting and analytics",
+      "Up to 10 individual users",
+      "20 GB individual data each user",
+      "Access to basic features",
+    ],
+  },
+  {
+    name: "Business plan",
+    price: "$20",
+    description: "Advanced features and reporting.",
+    popular: false,
+    features: [
+      "Advanced analytics",
+      "Priority support",
+      "Up to 50 individual users",
+      "100 GB individual data each user",
+      "Customizable dashboard",
+    ],
+  },
+  {
+    name: "Enterprise plan",
+    price: "$40",
+    description: "Unlimited features",
+    popular: false,
+    features: [
+      "Unlimited users",
+      "Dedicated account manager",
+      "Enterprise-level security",
+      "Custom integrations",
+      "Priority support",
+    ],
+  },
+];
+---
+
+<section class="w-[100%] flex justify-center">
+  <div
+    class="py-24 w-[85%] flex flex-col items-center justify-between gap-16 border-b border-[#E9EAEB]"
+  >
+    <div class="flex flex-col gap-3 justify-center items-center">
+      <div class="text-lg font-semibold text-[#6941C6]">Pricing</div>
+      <div class="text-[#181D27] text-3xl font-bold">
+        Plans that fit your scale
+      </div>
+      <p class="text-[#535862]">
+        Simple, transparent pricing that grows with you. Try any plan free for
+        30 days.
+      </p>
+    </div>
+    <div class="w-[100%] flex gap-8">
+      {
+        plans.map((data) => (
+          <div class="w-1/3 border border-[#E9EAEB] rounded-2xl shadow-lg p-4 flex flex-col gap-10">
+            <div class="flex justify-between items-center">
+              <div class="text-xl text-[#535862] font-medium">{data.name}</div>
+              {data.popular && (
+                <div class="bg-[#F9F5FF] border border-[#E9D7FE] text-[#6941C6] text-xs py-1 px-2 font-medium rounded-3xl">
+                  Popular
+                </div>
+              )}
+            </div>
+            <div class="flex items-end">
+              <div class="text-7xl text-[#181D27] font-bold">{data.price}</div>
+              <div class="text-lg text-[#535862] font-medium">per month</div>
+            </div>
+            <div class="text-lg text-[#535862]">{data.description}</div>
+            <div class="flex flex-col gap-4">
+              <button class="border border-[#7F56D9] py-1.5 px-7 rounded-lg text-lg font-medium bg-[#7F56D9] text-white hover:bg-transparent hover:text-[#7F56D9] transition transform-fill">
+                Get Started
+              </button>
+              <button class="border-[1.5px] border-gray-200 py-1.5 px-7 rounded-lg text-lg font-medium gap-2">
+                Chat to Sales
+              </button>
+            </div>
+            <div class="w-[100%] h-[1px] bg-[#E9EAEB]" />
+
+            <div>
+              <div class="text-xl text-[#181D27] font-medium">FEATURES</div>
+              <div class="text-lg text-[#535862] mt-3">
+                Everything in{" "}
+                <span class="text-[#181D27] font-medium">
+                  {data.name.split(" ")[0]}
+                </span>{" "}
+                plus ....
+              </div>
+              <div class="mt-6 flex flex-col gap-5 text-lg">
+                {data.features.map((feature) => (
+                  <div class="flex gap-2 items-center text-[#535862]">
+                    <img src="./check-icon.png" />
+                    <div>{feature}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
