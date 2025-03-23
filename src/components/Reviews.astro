@@ -1,3 +1,37 @@
+---
+const reviews = [
+  {
+    name: "Alisa Hester",
+    position: "PM, Hourglass",
+    company: "Web Design Agency",
+    image: "/public/sarah.jpeg",
+    rating: 4,
+  },
+  {
+    name: "Rich Wilson",
+    position: "COO, Command+R",
+    company: "Web Development Agency",
+    image: "/public/danes.jpeg",
+    rating: 4,
+    review: "We’ve really sped up our workflow using Untitled.",
+  },
+  {
+    name: "Annie Stanley",
+    position: "Designer, Catalog",
+    company: "UX Agency",
+    image: "/public/alina.jpeg",
+    rating: 4,
+  },
+  {
+    name: "Johnny Bell",
+    position: "PM, Sisyphus",
+    company: "Machine Learning",
+    image: "/public/jonas.jpeg",
+    rating: 4,
+  },
+];
+---
+
 <section class="w-[100%] flex justify-center">
   <div
     class="py-24 w-[85%] flex flex-col items-center justify-between gap-8 border-b border-[#E9EAEB]"
@@ -21,86 +55,29 @@
       Hear from some of our amazing customers who are automating their finances.
     </p>
     <div class="flex gap-10">
-      <div class="relative">
-        <img src="/public/sarah.jpeg" class="h-104 w-full object-cover" />
-        <div
-          class="absolute bottom-3 left-3 w-[90%] h-auto border border-gray-300 flex flex-col gap-2 text-white bg-[#5b59594d] backdrop-blur-sm rounded-xl shadow-2xl p-3"
-        >
-          <div class="flex gap-1">
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-gray-400 text-xl">★</span>
-            <!-- Unfilled star -->
+      {
+        reviews.map((review) => (
+          <div class="relative">
+            <img src={review.image} class="h-104 w-full object-cover" />
+            <div class="absolute bottom-3 left-3 w-[90%] h-auto border border-gray-300 flex flex-col gap-2 text-white bg-[#5b59594d] backdrop-blur-sm rounded-xl shadow-2xl p-3">
+              <div class="flex gap-1">
+                {[...Array(5)].map((_, index) => (
+                  <span
+                    class={`text-xl ${index < review.rating ? "text-yellow-400" : "text-gray-400"}`}
+                  >
+                    ★
+                  </span>
+                ))}
+              </div>
+              <div class="text-lg font-semibold">{review.name}</div>
+              <div>
+                <div>{review.position}</div>
+                <div>{review.company}</div>
+              </div>
+            </div>
           </div>
-          <div class="text-lg font-semibold">Alisa Hester</div>
-          <div>
-            <div>PM, Hourglass</div>
-            <div>Web Design Agency</div>
-          </div>
-        </div>
-      </div>
-      <div class="relative">
-        <img src="/public/danes.jpeg" class="h-104 w-full object-cover" />
-        <div
-          class="absolute bottom-3 left-3 w-[90%] h-auto border border-gray-300 flex flex-col gap-2 text-white bg-[#5b59594d] backdrop-blur-sm rounded-xl shadow-2xl p-3"
-        >
-          <div>“We’ve really sped up our workflow using Untitled.”</div>
-          <div class="flex gap-1">
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-gray-400 text-xl">★</span>
-            <!-- Unfilled star -->
-          </div>
-          <div class="text-lg font-semibold">Rich Wilson</div>
-          <div>
-            <div>COO, Command+R</div>
-            <div>Web Development Agency</div>
-          </div>
-        </div>
-      </div>
-      <div class="relative">
-        <img src="/public/alina.jpeg" class="h-104 w-full object-cover" />
-        <div
-          class="absolute bottom-3 left-3 w-[90%] h-auto border border-gray-300 flex flex-col gap-2 text-white bg-[#5b59594d] backdrop-blur-sm rounded-xl shadow-2xl p-3"
-        >
-          <div class="flex gap-1">
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-gray-400 text-xl">★</span>
-            <!-- Unfilled star -->
-          </div>
-          <div class="text-lg font-semibold">Annie Stanley</div>
-          <div>
-            <div>Designer, Catalog</div>
-            <div>UX Agency</div>
-          </div>
-        </div>
-      </div>
-      <div class="relative">
-        <img src="/public/jonas.jpeg" class="h-104 w-full object-cover" />
-        <div
-          class="absolute bottom-3 left-3 w-[90%] h-auto border border-gray-300 flex flex-col gap-2 text-white bg-[#5b59594d] backdrop-blur-sm rounded-xl shadow-2xl p-3"
-        >
-          <div class="flex gap-1">
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-yellow-400 text-xl">★</span>
-            <span class="text-gray-400 text-xl">★</span>
-          </div>
-          <div class="text-lg font-semibold">Johnny Bell</div>
-          <div>
-            <div>PM, Sisyphus</div>
-            <div>Machine Learning</div>
-          </div>
-        </div>
-      </div>
+        ))
+      }
     </div>
   </div>
 </section>
