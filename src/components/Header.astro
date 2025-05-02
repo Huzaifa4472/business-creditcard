@@ -1,29 +1,85 @@
-<header class="w-[100%] flex justify-center">
-  <div class="py-8 w-[85%] flex justify-between">
-    <div class="flex items-center gap-12">
-      <div class="flex items-center gap-2">
-        <img src="/public/logoMark.png" />
-        <div class="text-xl font-bold">Untitled UI</div>
-      </div>
-      <nav>
-        <ul class="flex gap-8 text-lg">
-          <li><a href="#">Products</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">Resources</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
-      </nav>
+<header class="w-full relative">
+  <div class="py-6 px-4 max-w-7xl mx-auto flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center gap-2">
+      <img src="/Logomark.png" alt="Logo" class="w-8 h-8" />
+      <span class="text-xl font-bold">Untitled UI</span>
     </div>
-    <div>
+    <button
+      id="menu-toggle"
+      class="md:hidden text-[#7F56D9] border b-1 rounded-lg px-2 pb-1.5 text-3xl focus:outline-none"
+    >
+      ☰
+    </button>
+    <nav class="hidden md:!flex items-center lg:gap-12 gap-6">
+      <ul class="flex lg:gap-8 md:gap-4 lg:text-lg text-md">
+        <li><a href="#review">Products</a></li>
+        <li><a href="#service">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#trustedCompanies">Resources</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <div class="flex gap-4">
+        <button
+          class="border border-gray-300 lg:py-2 py-1 lg:px-5 px-3 rounded-lg lg:text-lg text-md font-medium hover:bg-gray-200"
+        >
+          Log in
+        </button>
+        <button
+          class="border border-[#7F56D9] bg-[#7F56D9] text-white lg:py-2 py-1 lg:px-5 px-3 rounded-lg lg:text-lg text-sm font-medium hover:bg-transparent hover:text-[#7F56D9]"
+        >
+          Sign up
+        </button>
+      </div>
+    </nav>
+  </div>
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden min-h-screen flex flex-col gap-4 px-6 py-16 bg-[#7F56D9] w-full absolute top-0 left-0 shadow-md z-50"
+  >
+    <div class="flex justify-end">
+      <button id="menu-cancel" class="md:hidden text-white text-3xl">
+        <img src="/public/cancel.png" class="w-6 h-6" />
+      </button>
+    </div>
+    <ul
+      class="flex flex-col items-center gap-10 font-medium text-white text-lg"
+    >
+      <li><a href="#review">Products</a></li>
+      <li><a href="#service">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#trustedCompanies">Resources</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <div class="flex flex-col items-center gap-4 mt-4">
       <button
-        class="border border-gray-300 py-2 px-5 rounded-lg text-lg font-medium bg-transparent hover:bg-gray-300 transition transform-fill"
-        >Log in</button
+        class="bg-white py-2 px-5 w-40 rounded-lg text-[#7F56D9] text-lg font-medium hover:bg-gray-200"
       >
+        Log in
+      </button>
       <button
-        class="border border-[#7F56D9] py-2 px-5 rounded-lg text-lg font-medium bg-[#7F56D9] text-white hover:bg-transparent hover:text-[#7F56D9] transition transform-fill"
-        >Sign up</button
+        class="border border-white w-40 bg-[#7F56D9] text-white py-2 px-5 rounded-lg text-lg font-medium hover:bg-transparent hover:text-[#7F56D9]"
       >
+        Sign up
+      </button>
     </div>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const cancel = document.getElementById("menu-cancel");
+
+      if (toggle && mobileMenu) {
+        toggle.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      }
+      if (cancel && mobileMenu) {
+        cancel.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
+      }
+    });
+  </script>
 </header>

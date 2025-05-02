@@ -4,14 +4,14 @@ const reviews = [
     name: "Alisa Hester",
     position: "PM, Hourglass",
     company: "Web Design Agency",
-    image: "/public/sarah.jpeg",
+    image: "/sarah.jpeg",
     rating: 4,
   },
   {
     name: "Rich Wilson",
     position: "COO, Command+R",
     company: "Web Development Agency",
-    image: "/public/danes.jpeg",
+    image: "/danes.jpeg",
     rating: 4,
     review: "We’ve really sped up our workflow using Untitled.",
   },
@@ -19,23 +19,24 @@ const reviews = [
     name: "Annie Stanley",
     position: "Designer, Catalog",
     company: "UX Agency",
-    image: "/public/alina.jpeg",
+    image: "/alina.jpeg",
     rating: 4,
   },
   {
     name: "Johnny Bell",
     position: "PM, Sisyphus",
     company: "Machine Learning",
-    image: "/public/jonas.jpeg",
+    image: "/jonas.jpeg",
     rating: 4,
   },
 ];
 ---
 
-<section class="w-[100%] flex justify-center">
+<section id="review" class="w-full flex justify-center">
   <div
-    class="py-24 w-[85%] flex flex-col items-center justify-between gap-8 border-b border-[#E9EAEB]"
+    class="py-24 w-[85%] flex flex-col items-center gap-8 border-b border-[#E9EAEB]"
   >
+    <!-- Header -->
     <div
       class="flex lg:flex-row flex-col gap-5 items-center justify-between w-full"
     >
@@ -48,54 +49,81 @@ const reviews = [
       </div>
       <div class="flex sm:flex-row flex-col gap-4">
         <button
-          class="border-[1.5px] border-gray-200 py-1.5 px-7 rounded-lg lg:text-lg font-medium whitespace-nowrap"
-          >Our Customers</button
+          class="border-[1.5px] border-gray-200 py-1.5 px-7 rounded-lg lg:text-lg font-medium"
         >
+          Our Customers
+        </button>
         <button
-          class="border border-[#7F56D9] py-1.5 px-7 rounded-lg lg:text-lg font-medium bg-[#7F56D9] text-white hover:bg-transparent hover:text-[#7F56D9] transition transform-fill whitespace-nowrap"
-          >Create Account</button
+          class="border border-[#7F56D9] py-1.5 px-7 rounded-lg lg:text-lg font-medium bg-[#7F56D9] text-white hover:bg-transparent hover:text-[#7F56D9] transition"
         >
+          Create Account
+        </button>
       </div>
     </div>
 
-    <div class="flex gap-10">
-      {
-        reviews.map((review) => (
-          <div class="relative">
-            <img src={review.image} class="h-104 w-full object-cover" />
-            <div class="absolute bottom-3 left-3 w-[90%] h-auto border border-gray-300 flex flex-col gap-2 text-white bg-[#5b59594d] backdrop-blur-sm rounded-xl shadow-2xl p-3">
-              <div class="flex gap-1">
-                {[...Array(5)].map((_, index) => (
-                  <span
-                    class={`text-xl ${index < review.rating ? "text-yellow-400" : "text-gray-400"}`}
-                  >
-                    ★
-                  </span>
-                ))}
-              </div>
-              <div class="text-lg font-semibold">{review.name}</div>
-              <div>
-                <div>{review.position}</div>
-                <div>{review.company}</div>
+    <!-- Carousel -->
+    <div class="relative w-full overflow-hidden">
+      <div
+        id="carousel"
+        class="flex gap-10 overflow-x-scroll scroll-smooth no-scrollbar"
+      >
+        {
+          reviews.map((review) => (
+            <div class="min-w-[300px] max-w-[300px] relative">
+              <img
+                src={review.image}
+                class="h-104 w-full object-cover rounded-lg"
+              />
+              <div class="absolute bottom-3 left-3 w-[90%] border border-gray-300 flex flex-col gap-2 text-white bg-[#5b59594d] backdrop-blur-sm rounded-xl shadow-2xl p-3">
+                <div class="flex gap-1">
+                  {[...Array(5)].map((_, index) => (
+                    <span
+                      class={`text-xl ${index < review.rating ? "text-yellow-400" : "text-gray-400"}`}
+                    >
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <div class="text-lg font-semibold">{review.name}</div>
+                <div>
+                  <div>{review.position}</div>
+                  <div>{review.company}</div>
+                </div>
               </div>
             </div>
-          </div>
-        ))
-      }
-    </div>
-    <div class="flex gap-6 items-start w-[100%]">
-      <button
-        ><img
-          src="/public/left-arrow.png"
-          class="p-4 rounded-full border border-gray-300 text-lg"
-        /></button
-      >
-      <button
-        ><img
-          src="/public/right-arrow.png"
-          class="p-4 rounded-full border border-gray-300 text-lg"
-        /></button
-      >
+          ))
+        }
+      </div>
+
+      <!-- Arrows -->
+      <div class="flex gap-6 mt-6 justify-center">
+        <button
+          onclick="document.getElementById('carousel').scrollBy({left: -320, behavior: 'smooth'})"
+        >
+          <img
+            src="/left-arrow.png"
+            class="p-4 rounded-full border border-gray-300"
+          />
+        </button>
+        <button
+          onclick="document.getElementById('carousel').scrollBy({left: 320, behavior: 'smooth'})"
+        >
+          <img
+            src="/right-arrow.png"
+            class="p-4 rounded-full border border-gray-300"
+          />
+        </button>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
